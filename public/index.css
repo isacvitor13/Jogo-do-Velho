@@ -1,0 +1,151 @@
+/* Estilos para o tabuleiro */
+.game-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.board-row {
+  display: flex;
+}
+
+/* Estilos para as células */
+.square {
+  background: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 120px;
+  padding: 0px;
+  text-align: center;
+  width: 120px;
+  border-radius: 8px;
+  margin: .4vh;
+  box-shadow: -3px .6px 2px #171717;
+  transition: 0.3s;
+}
+
+.square:hover {
+  transform:rotate(90deg);
+}
+
+.square:focus {
+  outline: none;
+}
+
+/* Estilo para o botão de reiniciar */
+.game-info {
+  margin-top: 20px;
+  margin-right: 2em;
+  margin-left: 2em;
+}
+
+/* Estilos para os botões de movimento */
+.game-info ol {
+  list-style: none;
+  padding-left: 0;
+}
+
+.game-info ol>li {
+  margin-top: 10px;
+}
+
+.game-info ol>li button {
+  font-size: 14px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.game-info ol>li button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para o status */
+.status {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Estilo para o status do vencedor */
+.status.winner {
+  color: green;
+}
+
+/* Estilo para o status do próximo jogador */
+.status.next-player {
+  color: blue;
+}
+
+body {
+  background-image: linear-gradient(45deg, rgb(137, 186, 241), rgb(240, 235, 239));
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+  padding: 5em;
+  border-radius: 20px;
+  box-shadow: 1px 0px 8px black;
+}
+
+.Jogador {
+  color: rgb(15, 133, 133);
+  font-size: 2.5em;
+}
+
+.square:hover {
+  background-color: rgb(149, 143, 149);
+}
+li>button {
+  color: #ffffff;
+  background-color: #007bff;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
+
+.placar {
+  font-size: 2em;
+  color: rgb(40, 106, 106);
+}
+
+.game-info {
+  color: rgb(40, 106, 106);
+  font-size: 1em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.Ganhador {
+  color: rgb(39, 214, 97);
+  text-shadow: 2px 4px 6px #145e13;
+  font-size: 2.5em;
+}
+
+.Empate {
+  color: rgb(20, 158, 163);
+  text-shadow: 2px 4px 6px #a4a2a2;
+  font-size: 2.5em;
+}
+
+.novozerar {
+  color: #ffffff;
+  background-color: #007bff;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  margin: .2em;
+}
