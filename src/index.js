@@ -59,7 +59,7 @@ class Game extends React.Component {
       xIsNext: true,
       Placarx: 0,
       placarO: 0,
-      empate: 0,
+      Empate: 0,
       winner: null,
     }
   }
@@ -75,16 +75,16 @@ class Game extends React.Component {
     const winner = calculateWinner(squares)
     let Placarx = this.state.Placarx
     let placarO = this.state.placarO
-    let empate = this.state.empate
+    let Empate = this.state.Empate
     if (winner) {
       if (winner === 'X') {
         Placarx++
       } else {
         placarO++
       }
-      if (this.state.stepNumber === 9) {
-        empate++
-      }
+      
+    }else if (this.state.stepNumber === 8) {
+      Empate++
     }
     this.setState({
       history: history.concat([{ squares: squares }]),
@@ -92,7 +92,7 @@ class Game extends React.Component {
       xIsNext: !this.state.xIsNext,
       Placarx: Placarx,
       placarO: placarO,
-      empate: empate,
+      Empate: Empate,
       winner: winner,
     })
   }
@@ -109,7 +109,7 @@ class Game extends React.Component {
     this.setState({
       Placarx: 0,
       placarO: 0,
-      empate: 0,
+      Empate: 0,
     })
   }
 
@@ -130,10 +130,13 @@ class Game extends React.Component {
     const winner = this.state.winner
 
     let status
+    let status2
     if (winner) {
-      status = 'Ganhador ' + winner
+      status = `Ganhador  ${winner}`
+      status2='Ganhador'
     } else {
-      status = 'Próximo' + ' Jogador' + ' :' + (this.state.xIsNext ? 'X' : 'O')
+      status = `Próximo Jogador :  ${(this.state.xIsNext ? 'X' : 'O')}`
+      status2='Próximo Jogador'
     }
 
     const moves = history.map((step, move) => {
@@ -145,12 +148,9 @@ class Game extends React.Component {
       )
     })
 
-    let resultado = null
-    if (winner) {
-      resultado = <div className="resultado"> {winner} </div>
-    } else if (this.state.stepNumber === 9) {
-      resultado = <div className="resultado">Empate!</div>
+    if (this.state.stepNumber === 9) {
       status="Empate"  
+      status2="Empate"  
     }
 
     let newGameButton = null
@@ -168,18 +168,16 @@ class Game extends React.Component {
           />
         </div>
         <div className="game-info">
-          <div className={status}>{status}</div>
+          <div className={status2}>{status}</div>
           <h2>Placar:</h2>
           <h3>Jogador X: {this.state.Placarx}</h3>
           <h3>Jogador O: {this.state.placarO}</h3>
-          <h3>Empate: {this.state.empate}</h3>
+          <h3>Empate: {this.state.Empate}</h3>
           <button className='novozerar' onClick={() => this.resetarPlacar()}>Zerar Placar</button>
           {newGameButton}
           <ol>{moves}</ol>
         </div>
-        {/* <div className="resultado-container">
-          {resultado}
-        </div> */}
+       
       </div>
     )
   }
