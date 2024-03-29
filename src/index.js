@@ -82,9 +82,11 @@ class Game extends React.Component {
       } else {
         placarO++
       }
-      
-    }else if (this.state.stepNumber === 8) {
+
+    } else if (this.state.stepNumber === 8) {
       Empate++
+
+
     }
     this.setState({
       history: history.concat([{ squares: squares }]),
@@ -131,13 +133,17 @@ class Game extends React.Component {
 
     let status
     let status2
+
     if (winner) {
       status = `Ganhador  ${winner}`
-      status2='Ganhador'
-    } else {
+      status2 = 'Ganhador'
+    } else if (!winner) {
       status = `Próximo Jogador :  ${(this.state.xIsNext ? 'X' : 'O')}`
-      status2='Próximo Jogador'
+      status2 = 'Próximo Jogador'
+
     }
+
+
 
     const moves = history.map((step, move) => {
       const desc = move ? 'Voltar para a jogada ' + move : 'Inicio'
@@ -149,14 +155,17 @@ class Game extends React.Component {
     })
 
     if (this.state.stepNumber === 9) {
-      status="Empate"  
-      status2="Empate"  
+      status='Empate'
+      status2='Empate'
     }
 
+
+
     let newGameButton = null
-    if (winner || this.state.stepNumber === 9) {
+    if (this.state.stepNumber > 0) {
       newGameButton = <button className='novozerar' onClick={() => this.resetGame()}>Novo Jogo</button>
     }
+
 
     return (
       <div className="game">
@@ -164,7 +173,7 @@ class Game extends React.Component {
           <Board
             squares={current.squares}
             onClick={(i) => this.handleClick(i)}
-          
+
           />
         </div>
         <div className="game-info">
@@ -177,7 +186,6 @@ class Game extends React.Component {
           {newGameButton}
           <ol>{moves}</ol>
         </div>
-       
       </div>
     )
   }
@@ -193,6 +201,7 @@ function calculateWinner(squares) {
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6],
+
   ]
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i]
