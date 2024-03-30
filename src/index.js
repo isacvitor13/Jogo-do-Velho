@@ -85,8 +85,6 @@ class Game extends React.Component {
 
     } else if (this.state.stepNumber === 8) {
       Empate++
-
-
     }
     this.setState({
       history: history.concat([{ squares: squares }]),
@@ -144,6 +142,9 @@ class Game extends React.Component {
     }
 
 
+   
+
+
 
     const moves = history.map((step, move) => {
       const desc = move ? 'Voltar para a jogada ' + move : 'Inicio'
@@ -154,11 +155,11 @@ class Game extends React.Component {
       )
     })
 
-    if (this.state.stepNumber === 9) {
+
+    if (this.state.stepNumber === 9 && !winner) {
       status='Empate'
       status2='Empate'
     }
-
 
 
     let newGameButton = null
